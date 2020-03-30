@@ -1,0 +1,23 @@
+<h1>login works!</h1>
+<form (ngSubmit)="onSubmit(loginForm)" [formGroup]="loginForm">
+    <input type="text" placeholder="Fill in your name" name="name" formControlName="name" />
+    <div *ngIf="loginForm.controls['name'].invalid && loginForm.controls['name'].touched">Name is not valid</div>
+    <input type="email" placeholder="Fill in your email" name="email" formControlName="email" />
+    <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">Email is not valid</div>
+    <div *ngIf="loginForm.get('email').hasError('email') && loginForm.get('email').touched">Emaii must have @</div>
+    <input type="password" placeholder="Fill in your password" name="pass" formControlName="pass" />
+    <div *ngIf="loginForm.get('pass').hasError('required') && loginForm.get('pass').touched">Password not valid</div>
+    <div *ngIf="loginForm.get('pass').hasError('minlength') && loginForm.get('pass').touched">Password has to have minimum of 6 characters</div>
+    <div formArrayName="phones" *ngFor="let phone of loginForm.controls['phones']['controls']; let i = index">
+        <input type="tel" class="input" placeholder="Fill in your phone" name="phone" formControlName="{{i}}" />
+        <button class="btn" type="button" (click)="onRemovePhone(i)">
+        Delete phone number
+    </button>
+    </div>
+    <button type="button" (click)="onAddPhone()">
+        + Add phone number
+    </button>
+    <button type="submit" [disabled]="!loginForm.valid">
+        Send
+    </button>
+</form>
