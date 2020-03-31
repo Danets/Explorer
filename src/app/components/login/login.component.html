@@ -1,0 +1,13 @@
+<h1>login works!</h1>
+<!-- <h2 [hidden]="!authentificated">Hello {{name}}</h2> -->
+<h2 *ngIf="authentificated">Hello {{name}}</h2>
+<form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+    <input type="text" placeholder="Fill in your name" name="name" formControlName="name" />
+    <div *ngIf="loginForm.controls['name'].invalid && loginForm.controls['name'].touched">Name is not valid</div>
+    <input type="password" placeholder="Fill in your password" name="pass" formControlName="pass" />
+    <div *ngIf="loginForm.get('pass').hasError('required') && loginForm.get('pass').touched">Password not valid</div>
+    <div *ngIf="loginForm.get('pass').hasError('minlength') && loginForm.get('pass').touched">Password has to have minimum of 6 characters</div>
+    <button type="submit" [disabled]="!loginForm.valid">
+        Login
+    </button>
+</form>
