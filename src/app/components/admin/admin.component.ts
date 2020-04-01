@@ -31,7 +31,9 @@ export class AdminComponent implements OnInit {
   }
 
   onSubmit({value}) {
-    this.auth.register(value).subscribe(res => this.router.navigate(['login']));
+    // this.auth.register(value).subscribe(res => this.router.navigate(['login']));
+    this.auth.register(value);
+    this.router.navigate(['login']);
     console.log(value);
     this.signupForm.reset();
   }

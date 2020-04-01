@@ -1,23 +1,97 @@
 <p>admin works!</p>
 <form (ngSubmit)="onSubmit(signupForm)" [formGroup]="signupForm">
-    <input type="text" placeholder="Fill in your name" name="name" formControlName="name" />
-    <div *ngIf="signupForm.controls['name'].invalid && signupForm.controls['name'].touched">Name is not valid</div>
-    <input type="email" placeholder="Fill in your email" name="email" formControlName="email" />
-    <div *ngIf="signupForm.controls['email'].invalid && signupForm.controls['email'].touched">Email is not valid</div>
-    <div *ngIf="signupForm.get('email').hasError('email') && signupForm.get('email').touched">Emaii must have @</div>
-    <input type="password" placeholder="Fill in your password" name="pass" formControlName="pass" />
-    <div *ngIf="signupForm.get('pass').hasError('required') && signupForm.get('pass').touched">Password not valid</div>
-    <div *ngIf="signupForm.get('pass').hasError('minlength') && signupForm.get('pass').touched">Password has to have minimum of 6 characters</div>
-    <div formArrayName="phones" *ngFor="let phone of signupForm.controls['phones']['controls']; let i = index">
-        <input type="tel" class="input" placeholder="Fill in your phone" name="phone" formControlName="{{i}}" />
-        <button class="btn" type="button" (click)="onRemovePhone(i)">
-        Delete phone number
+  <input
+    type="text"
+    placeholder="Fill in your name"
+    name="name"
+    formControlName="name"
+  />
+  <div
+    *ngIf="
+      signupForm.controls['name'].invalid && signupForm.controls['name'].touched
+    "
+  >
+    Name is not valid
+  </div>
+  <input
+    type="email"
+    placeholder="Fill in your email"
+    name="email"
+    formControlName="email"
+  />
+  <div
+    *ngIf="
+      signupForm.controls['email'].invalid &&
+      signupForm.controls['email'].touched
+    "
+  >
+    Email is not valid
+  </div>
+  <div
+    *ngIf="
+      signupForm.get('email').hasError('email') &&
+      signupForm.get('email').touched
+    "
+  >
+    Emaii must have @
+  </div>
+  <input
+    type="password"
+    placeholder="Fill in your password"
+    name="pass"
+    formControlName="pass"
+  />
+  <div
+    *ngIf="
+      signupForm.get('pass').hasError('required') &&
+      signupForm.get('pass').touched
+    "
+  >
+    Password not valid
+  </div>
+  <div
+    *ngIf="
+      signupForm.get('pass').hasError('minlength') &&
+      signupForm.get('pass').touched
+    "
+  >
+    Password has to have minimum of 6 characters
+  </div>
+  <div
+    formArrayName="phones"
+    *ngFor="
+      let phone of signupForm.controls['phones']['controls'];
+      let i = index
+    "
+  >
+    <input
+      type="tel"
+      class="input"
+      placeholder="Fill in your phone"
+      name="phone"
+      formControlName="{{ i }}"
+    />
+    <button class="btn" type="button" (click)="onRemovePhone(i)">
+      Delete phone number
     </button>
-    </div>
-    <button type="button" (click)="onAddPhone()">
-        + Add phone number
-    </button>
-    <button type="submit" [disabled]="signupForm.invalid">
-        Sign Up
-    </button>
+  </div>
+  <button type="button" (click)="onAddPhone()">
+    + Add phone number
+  </button>
+  <button
+    type="submit"
+    [disabled]="signupForm.invalid"
+    [hidden]="signupForm.valid"
+  >
+    Sign Up
+  </button>
+  <button
+    *ngIf="signupForm.valid"
+    type="submit"
+    [disabled]="signupForm.invalid"
+    mat-raised-button
+    color="primary"
+  >
+    Sign Up
+  </button>
 </form>

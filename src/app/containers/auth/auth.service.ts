@@ -16,41 +16,50 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
   
-  register(user: Admin): Observable<JwtResponse> {
-    return this.httpClient.post<JwtResponse>(`${this.AUTH_SERVER}/admin`, user).pipe(
-      tap((res: JwtResponse) => {
+  // register(user: Admin): Observable<JwtResponse> {
+  //   return this.httpClient.post<JwtResponse>(`${this.AUTH_SERVER}/admin`, user).pipe(
+  //     tap((res: JwtResponse) => {
 
-        if (res.user) {
-          localStorage.set("ACCESS_TOKEN", res.user.access_token);
-          localStorage.set("EXPIRES_IN", res.user.expires_in);
-          this.auth$.next(true);
-        }
-      })
-    )
+  //       if (res.user) {
+  //         localStorage.set("ACCESS_TOKEN", res.user.access_token);
+  //         localStorage.set("EXPIRES_IN", res.user.expires_in);
+  //         this.auth$.next(true);
+  //       }
+  //     })
+  //   )
+  // }
+
+  // login(user: Admin): Observable<JwtResponse> {
+  //   return this.httpClient.post(`${this.AUTH_SERVER}/login`, user).pipe(
+  //     tap(async (res: JwtResponse) => {
+
+  //       if (res.user) {
+  //         localStorage.setItem("ACCESS_TOKEN", res.user.access_token);
+  //         localStorage.setItem("EXPIRES_IN", res.user.expires_in);
+  //         this.auth$.next(true);
+  //       }
+  //     })
+  //   );
+  // }
+
+  register(user: Admin) {
+    localStorage.setItem("ACCESS_TOKEN", 'new token');
   }
 
-  login(user: Admin): Observable<JwtResponse> {
-    return this.httpClient.post(`${this.AUTH_SERVER}/login`, user).pipe(
-      tap(async (res: JwtResponse) => {
-
-        if (res.user) {
-          localStorage.setItem("ACCESS_TOKEN", res.user.access_token);
-          localStorage.setItem("EXPIRES_IN", res.user.expires_in);
-          this.auth$.next(true);
-        }
-      })
-    );
+  login(user: Admin) {
+    // localStorage.getItem("ACCESS_TOKEN");
+    localStorage.setItem("ACCESS_TOKEN", 'new token');
   }
 
   logout() {
     localStorage.removeItem("ACCESS_TOKEN");
-    localStorage.removeItem("EXPIRES_IN");
-    this.auth$.next(false);
+    // localStorage.removeItem("EXPIRES_IN");
+    // this.auth$.next(false);
   }
 
   isLoggedIn() {
     return localStorage.getItem('ACCESS_TOKEN') !== null;
-    return this.auth$.asObservable();
+    // return this.auth$.asObservable();
   }
   
 }

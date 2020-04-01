@@ -42,11 +42,13 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     const {value} = this.loginForm;
-    this.auth.login(value).subscribe(res => {
-      this.router.navigateByUrl('admin')
-      console.log(res);
-    });
+    // this.auth.login(value).subscribe(res => {
+    //   this.router.navigateByUrl('admin')
+    //   console.log(res);
+    // });
+    this.auth.login(value);
     this.authentificated = true;
+    this.router.navigateByUrl('admin');
     this.name = value.name;
     console.log(value);
     this.loginForm.reset();
