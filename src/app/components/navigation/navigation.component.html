@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <span>{{loggedIn ? 'Explorer store' : 'You need to login'}}</span>
+  <nav>
+    <ul>
+      <li>
+        <a
+          routerLink="login"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Login</a
+        >
+      </li>
+      <li>
+        <a routerLink="/"
+         routerLinkActive="active"
+         (click)="onLogout()"
+         >Logout</a>
+      </li>
+    </ul>
+  </nav>
+</mat-toolbar>

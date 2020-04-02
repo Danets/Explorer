@@ -3,7 +3,37 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+form {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: 10% auto;
+}
 input {
     display: block;
+    width: 100%;
+    box-sizing: border-box;
     margin-bottom: 6px;
+    border: 1px black solid;
+    border-radius: 5px;
+    text-indent: 4px;
+    text-overflow: ellipsis;
+    &.ng-invalid.ng-touched {
+        border: 1px red solid;
+    }
+    &.ng-valid.ng-touched {
+        border: 1px rgb(81, 255, 0) solid;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+button, .btn {
+    width: 100%;
+    margin: 0 auto 6px;
+    padding: 4px 6px;
+    border: 1px #ccc solid;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
 }

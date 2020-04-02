@@ -49,17 +49,18 @@ export class AuthService {
   login(user: Admin) {
     // localStorage.getItem("ACCESS_TOKEN");
     localStorage.setItem("ACCESS_TOKEN", 'new token');
+    this.auth$.next(true);
   }
 
   logout() {
     localStorage.removeItem("ACCESS_TOKEN");
     // localStorage.removeItem("EXPIRES_IN");
-    // this.auth$.next(false);
+    this.auth$.next(false);
   }
 
   isLoggedIn() {
-    return localStorage.getItem('ACCESS_TOKEN') !== null;
-    // return this.auth$.asObservable();
+    // return localStorage.getItem('ACCESS_TOKEN') !== null;
+    return this.auth$.asObservable();
   }
   
 }

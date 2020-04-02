@@ -15,30 +15,19 @@ export class LoginComponent implements OnInit {
   name: string = '';
 
   constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
-    // this.loginForm = fb.group({
-    //   "name": ["", [Validators.required]],
-    //   // "email": ["", [Validators.required, Validators.email]],
-    //   "pass": ["", [Validators.required, Validators.minLength(6)]],
-    //   // "phones": fb.array([]),
-    // })
+   
   }
 
   ngOnInit(): void {
-    this.loginForm = this.fb.group({
-      "name": ["", Validators.required],
-      // "email": ["", [Validators.required, Validators.email]],
-      "pass": ["", [Validators.required, Validators.minLength(6)]],
-      // "phones": fb.array([]),
-    })
+    this.initForm();
   }
 
-  // onAddPhone() {
-  //   (<FormArray>this.loginForm.controls['phones']).push(new FormControl("+38", Validators.required))
-  // }
-
-  // onRemovePhone(index: number) {
-  //   (<FormArray>this.loginForm.controls['phones']).removeAt(index);
-  // }
+  initForm() {
+    this.loginForm = this.fb.group({
+      "name": ["", Validators.required],
+      "pass": ["", [Validators.required, Validators.minLength(6)]],
+    })
+  }
 
   onSubmit() {
     const {value} = this.loginForm;
@@ -48,9 +37,8 @@ export class LoginComponent implements OnInit {
     // });
     this.auth.login(value);
     this.authentificated = true;
-    this.router.navigateByUrl('admin');
+    this.router.navigateByUrl('dashboard');
     this.name = value.name;
-    console.log(value);
     this.loginForm.reset();
   }
 

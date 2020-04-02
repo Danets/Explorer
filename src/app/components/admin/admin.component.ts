@@ -13,7 +13,11 @@ export class AdminComponent implements OnInit {
   signupForm: FormGroup;
   constructor(private auth: AuthService, private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.initForm();
+  }
+
+  initForm() {
     this.signupForm = new FormGroup({
       name: new FormControl("", [Validators.required]),
       email: new FormControl("", [Validators.required, Validators.email]),
@@ -34,7 +38,6 @@ export class AdminComponent implements OnInit {
     // this.auth.register(value).subscribe(res => this.router.navigate(['login']));
     this.auth.register(value);
     this.router.navigate(['login']);
-    console.log(value);
     this.signupForm.reset();
   }
 
