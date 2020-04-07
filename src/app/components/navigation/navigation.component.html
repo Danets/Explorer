@@ -1,20 +1,37 @@
-<mat-toolbar color="primary">
+<mat-toolbar>
   <span>{{loggedIn ? 'Explorer store' : 'You need to login'}}</span>
   <nav>
     <ul>
-      <li>
+      <ng-template #rest>
+        <li>
+          <a
+            routerLink="home"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="movies"
+            routerLinkActive="active"
+            >Movies</a
+          >
+        </li>
+        <li>
+          <a routerLink="/"
+           routerLinkActive="active"
+           (click)="onLogout()"
+           >Logout</a>
+        </li>
+      </ng-template>
+      <li *ngIf="!loggedIn; else rest">
         <a
           routerLink="login"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
           >Login</a
         >
-      </li>
-      <li>
-        <a routerLink="/"
-         routerLinkActive="active"
-         (click)="onLogout()"
-         >Logout</a>
       </li>
     </ul>
   </nav>

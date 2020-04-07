@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MaterialModule} from './shared/material.module';
+import { MaterialModule } from './shared/material.module';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -11,7 +11,9 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardComponent } from './containers/dashboard/dashboard.component';
+import { MoviesListComponent } from './components/movies-list/movies-list.component';
+import { getRidOfWhitespacePipe } from './shared/get-rid-of-whitespace.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     LoginComponent,
     AdminComponent,
     NavigationComponent,
-    DashboardComponent
+    DashboardComponent,
+    MoviesListComponent,
+    getRidOfWhitespacePipe,
   ],
   imports: [
     BrowserModule,
