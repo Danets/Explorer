@@ -2,10 +2,10 @@
   <span>{{loggedIn ? 'Explorer store' : 'You need to login'}}</span>
   <nav>
     <ul>
-      <ng-template #rest>
+      <!-- <ng-template #rest> -->
         <li>
           <a
-            routerLink="home"
+            routerLink="/home"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             >Home</a
@@ -13,7 +13,7 @@
         </li>
         <li>
           <a
-            routerLink="movies"
+            routerLink="/movies"
             routerLinkActive="active"
             >Movies</a
           >
@@ -24,15 +24,15 @@
            (click)="onLogout()"
            >Logout</a>
         </li>
-      </ng-template>
-      <li *ngIf="!loggedIn; else rest">
+      <!-- </ng-template> -->
+      <!-- <li *ngIf="!loggedIn; else rest">
         <a
           routerLink="login"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
           >Login</a
         >
-      </li>
+      </li> -->
     </ul>
   </nav>
 </mat-toolbar>

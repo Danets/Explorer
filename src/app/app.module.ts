@@ -14,6 +14,8 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { DashboardComponent } from './containers/dashboard/dashboard.component';
 import { MoviesListComponent } from './components/movies-list/movies-list.component';
 import { getRidOfWhitespacePipe } from './shared/get-rid-of-whitespace.pipe';
+import { HomeComponent } from './components/home/home.component';
+import { MovieDetailComponent } from './components/movies-list/movie-detail/movie-detail.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { getRidOfWhitespacePipe } from './shared/get-rid-of-whitespace.pipe';
     DashboardComponent,
     MoviesListComponent,
     getRidOfWhitespacePipe,
+    HomeComponent,
+    MovieDetailComponent,
   ],
   imports: [
     BrowserModule,
