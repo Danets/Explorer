@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IMovie } from '../../models/movie';
 import { MovieService } from './movie.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-
+import { subscribeOn } from 'rxjs/operators';
 
 @Component({
     selector: 'app-dashboard',
@@ -11,10 +11,12 @@ import { Router } from '@angular/router';
     styleUrls: ['./dashboard.component.scss'],
 })
 
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
     movies: IMovie[] = [];
     filteredMovies: IMovie[];
     _filterName: string;
+    
+    subs: Subscription;
 
     displayedColumns: string[] = ['id', 'title', 'director', 'price'];
 
@@ -37,10 +39,14 @@ export class DashboardComponent implements OnInit {
     }
 
     getMovies() {
-        this.movieService.getMovies().subscribe(res => {
+        this.subs = this.movieService.getMovies().subscribe(res => {
             this.movies = res;
             this.filteredMovies = this.movies;
         })
+    }
+
+    ngOnDestroy() {
+        this.subs.unsubscribe();
     }
 
     // FILTER METHOD
@@ -51,7 +57,7 @@ export class DashboardComponent implements OnInit {
 
     onDetail(movie: IMovie) {
         console.log(movie)
-        const convertObj = JSON.stringify(movie)
+        // const convertObj = JSON.stringify(movie)
         // this.router.navigate(["/dashboard", movie.id], {queryParams: {movie: convertObj}});
         this.router.navigate(["/dashboard", movie.id]);
     }
