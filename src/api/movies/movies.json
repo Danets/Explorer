@@ -9,7 +9,9 @@
         "title": "The Lord of the Rings: The Fellowship of the Ring",
         "price": 12.95,
         "starRating": 4.88,
-        "approvalRating": 0.97
+        "approvalRating": 0.97,
+        "active": true,
+        "kind": "fantazy"
     },
     {
         "director": "Peter Jackson",
@@ -18,10 +20,12 @@
         "id": 2,
         "mpaa": "pg-13",
         "releaseDate": "2002-12-18T00:00:00",
-        "title": "The Lord of the Rings: The Two Towers",
+        "title": "Ablo of the Rings: The Two Towers",
         "price": 14.95,
         "starRating": 4.2,
-        "approvalRating": 0.94
+        "approvalRating": 0.94,
+        "active": true,
+        "kind": "fantazy"
     },
     {
         "director": "Peter Jackson",
@@ -30,10 +34,12 @@
         "id": 3,
         "mpaa": "pg-13",
         "releaseDate": "2003-12-17T00:00:00",
-        "title": "The Lord of the Rings: The Return of the King",
+        "title": "Baran of the Rings: The Return of the King",
         "price": 15.95,
         "starRating": 4.5,
-        "approvalRating": 0.9895
+        "approvalRating": 0.9895,
+        "active": false,
+        "kind": "fantazy"
     },
     {
         "director": "Fred Wolf",
@@ -45,7 +51,9 @@
         "title": "The Point",
         "price": 9.95,
         "starRating": 4.9,
-        "approvalRating": 0.9295
+        "approvalRating": 0.9295,
+        "active": true,
+        "kind": "porn"
     },
     {
         "director": "Chris Columbus",
@@ -57,6 +65,8 @@
         "title": "Pixels",
         "price": 5.59,
         "starRating": 2.7,
-        "approvalRating": 0.17
+        "approvalRating": 0.17,
+        "active": false,
+        "kind": "porn"
     }
 ]

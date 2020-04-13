@@ -1,12 +1,21 @@
-<div class="seach" [ngClass]="{'inputFilter': filterName}">
+<div class="seach" [ngClass]="{ inputFilter: filterName }">
   <input type="text" [(ngModel)]="filterName" />
   <span>{{ filterName }}</span>
 </div>
 
-<!-- <ul *ngIf="movies && movies.length; else elseTemplate">
-    <li *ngFor="let movie of movies | async; index as i">{{movie.title}}-{{i}}</li>
-    <li *ngFor="let movie of filteredMovies; index as i">{{movie.title | getRidOfWhitespace: " "}}-{{i}}</li>
-</ul> -->
+<div class="nav-filter">
+  <button (click)="onSortPrice()">Sort by Price</button>
+  <button (click)="onSortTitle()">Sort Title</button>
+
+  <button (click)="execFilter('all')">All</button>
+  <button (click)="execFilter('active')">Active</button>
+  <button (click)="execFilter('noactive')">NoActive</button>
+</div>
+
+<ul>
+    <!-- <li *ngFor="let movie of movies | async; index as i">{{movie.title}}-{{i}}</li> -->
+    <li *ngFor="let movie of filteredMovies; index as i">{{movie.title | getRidOfWhitespace: " "}}-{{i}} -- {{movie.price}}</li>
+</ul>
 
 <!-- <app-movies-list
   *ngIf="movies && movies.length; else elseTemplate"
@@ -21,29 +30,32 @@
   <!-- Position Column -->
   <ng-container matColumnDef="id">
     <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
   </ng-container>
 
   <!-- Name Column -->
   <ng-container matColumnDef="title">
     <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+    <mat-cell *matCellDef="let element"> {{ element.title }} </mat-cell>
   </ng-container>
 
   <!-- Weight Column -->
   <ng-container matColumnDef="director">
     <mat-header-cell *matHeaderCellDef> Director </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.director}} </mat-cell>
+    <mat-cell *matCellDef="let element"> {{ element.director }} </mat-cell>
   </ng-container>
 
   <!-- Symbol Column -->
   <ng-container matColumnDef="price">
     <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
-    <mat-cell *matCellDef="let element">{{ element.price | currency:'USD'}} </mat-cell>
+    <mat-cell *matCellDef="let element"
+      >{{ element.price | currency: "USD" }}
+    </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onDetail(row)"></mat-row>
+  <mat-row
+    *matRowDef="let row; columns: displayedColumns"
+    (click)="onDetail(row)"
+  ></mat-row>
 </mat-table>
-
-
