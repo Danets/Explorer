@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'movies', component: MoviesListComponent, resolve: {movies: MoviesResolverService} },
   { path: 'home', component: HomeComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: 'dashboard' }
+  { path: '**', pathMatch: 'full', redirectTo: 'dashboard' }
   // { path: '**', redirectTo: 'login' }
 ];
 

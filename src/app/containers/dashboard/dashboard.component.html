@@ -14,7 +14,7 @@
 
 <ul>
     <!-- <li *ngFor="let movie of movies | async; index as i">{{movie.title}}-{{i}}</li> -->
-    <li *ngFor="let movie of filteredMovies; index as i">{{movie.title | getRidOfWhitespace: " "}}-{{i}} -- {{movie.price}}</li>
+    <li *ngFor="let movie of filteredMovies; index as i; trackBy:trackByFn">{{movie.title | getRidOfWhitespace: " "}}-{{i}} -- {{movie.price}}</li>
 </ul>
 
 <!-- <app-movies-list

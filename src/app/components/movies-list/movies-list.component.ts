@@ -22,7 +22,10 @@ export class MoviesListComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.data = this.route.snapshot.data.movies;
+    // 1) case
+    // this.data = this.route.snapshot.data.movies;
+    // 2) case
+    this.data = this.route.data['movies'];
     console.log(this.data);
   }
 
