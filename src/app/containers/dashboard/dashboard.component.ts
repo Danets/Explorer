@@ -76,7 +76,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     // SORT METHOD
   onSortPrice() {
-    [...this.filteredMovies].sort(this.sortByPrice.bind(this));
+    this.filteredMovies.sort(this.sortByPrice.bind(this));
     this.arrowSort = !this.arrowSort;
   }
 
@@ -91,7 +91,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   onSortTitle() {
-    [...this.filteredMovies].sort(this.sortByTitle.bind(this));
+    this.filteredMovies.sort(this.sortByTitle.bind(this));
     this.arrowSort = !this.arrowSort;
   }
 

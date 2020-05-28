@@ -16,7 +16,7 @@ import { MoviesListComponent } from './components/movies-list/movies-list.compon
 import { getRidOfWhitespacePipe } from './shared/get-rid-of-whitespace.pipe';
 import { HomeComponent } from './components/home/home.component';
 import { MovieDetailComponent } from './components/movies-list/movie-detail/movie-detail.component';
-
+import { ErrorComponent } from './shared/error/error.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +28,7 @@ import { MovieDetailComponent } from './components/movies-list/movie-detail/movi
     getRidOfWhitespacePipe,
     HomeComponent,
     MovieDetailComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,

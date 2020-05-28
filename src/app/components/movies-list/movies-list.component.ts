@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Data } from '@angular/router';
 import { IMovie } from '../../models/movie';
 import { Observable } from 'rxjs';
 @Component({
@@ -9,24 +9,17 @@ import { Observable } from 'rxjs';
 })
 export class MoviesListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'title', 'director', 'price'];
-  // @Input() movies:  IMovie[];
-  data: IMovie[];
-
-// ngOnChanges(changes: SimpleChanges): void {
-//   //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
-//   //Add '${implements OnChanges}' to the class.
-//   console.log(changes);
-//   console.log(this.movies);
-// }
+  movies: IMovie[];
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    // 1) case
-    // this.data = this.route.snapshot.data.movies;
-    // 2) case
-    this.data = this.route.data['movies'];
-    console.log(this.data);
+    // 1) Static Case
+    // this.movies = this.route.snapshot.data.movies;
+    // 2) Dinamic Case
+    this.route.data.subscribe((data: Data) => this.movies = data['movies']);
+
+    console.log(this.movies);
   }
 
 }
